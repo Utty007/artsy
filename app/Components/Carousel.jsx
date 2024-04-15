@@ -8,7 +8,7 @@ import SCFive from '@/app/Assets/sc5.png';
 
 function Carousel() {
   return (
-      <div className='flex items-center gap-6'>
+      <div className='flex items-center gap-2' data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
         <div>
           <Image src={SCOne} alt='Slider Image' />
         </div>

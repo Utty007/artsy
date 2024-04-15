@@ -5,6 +5,7 @@ import Upcoming from '../Components/Upcoming';
 import Image from 'next/image';
 import arrowIcon from '@/app/Assets/Icons/arrowIcon.png';
 import Section from '../Components/Section';
+import Sub from '../Components/Sub';
 
 function Main() {
   return (
@@ -13,7 +14,7 @@ function Main() {
           <h1 className='text-6xl text-center text-[#292929] font-[500] leading-snug mt-14'>Photography is poetry & beautiful <br />untold stories</h1>
           <p className='text-center text-2xl font-[500] font-Satoshi'>Flip through more than 10,000 vintage shots, old photograghs, historic images and captures seamlessly in one place. Register to get top access.</p>
         </div>
-        <Carousel />
+        <Carousel infiniteLoop />
         <Products />
         <Upcoming />
         <div className='my-24'>
@@ -27,6 +28,7 @@ function Main() {
           </div>
         </div>
         <Section />
+        <Sub />
       </div>
   )
 }

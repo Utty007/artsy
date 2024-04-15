@@ -1,8 +1,9 @@
 import React from 'react'
+import Slideshow from './ImageShuffle';
 
 function Section() {
   return (
-    <div className='bg-[#e2e2e2] p-10 pr-16'>
+    <div className='bg-[#e2e2e2] p-10 pr-16 relative'>
         <div className='flex items-start justify-between'>
             <h2 className='text-[#161616] text-5xl font-semibold leading-[65px]'>TOP CREATORS OF <br /> THE WEEK</h2>
             <div className='flex items-center gap-4'>
@@ -14,6 +15,9 @@ function Section() {
                     <span className='text-3xl font-normal text-[#333]'>Blueprint</span>
                 </div>
             </div>
+        </div>
+        <div className='absolute w-[500px] h-[500px] m-auto bottom-0 left-0 right-0'>
+            <Slideshow />
         </div>
         <div className='w-[80%] m-auto'>
             <p className='text-2xl leadng-[40px] font-extralight'>“Everything always looked better in black and white. Everything always  as if it were the first time; there’s always more people in a black and white photograph. It just makes it seem that there were more people at a gig, more people at a football match, than with colour photography. Everything looks more exciting.”– Jack Lowden</p>

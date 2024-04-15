@@ -4,7 +4,7 @@ import LocationIcon from '../Assets/Icons/LocationIcon';
 
 function Footer() {
   return (
-    <footer className='mx-16'>
+    <footer className='mx-16 pb-6'>
         <div className='flex items-center justify-between'>
             <h1 className='text-4xl font-bold uppercase text-[#292929] leading-[60px]'>Artsy.</h1>
            
