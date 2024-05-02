@@ -9,7 +9,7 @@ function Upcoming() {
     <div className='gradientBg w-full mt-20 px-12 pt-5 pb-8 text-[#fff]'>
         <h1 className='text-3xl font-medium leading-[50px]'>See Upcoming Auctions And Exhibitions</h1>
         <Image src={Arrow} alt='Arrow' width={450} className='relative left-[50px] pb-4' />
-        <div className='imageBg flex items-end justify-between p-9'>
+        <div className='imageBg flex flex-col lg:flex-row items-end justify-between p-9'>
             <div className='flex items-center gap-4'>
                 <div className='text-6xl leading-[80px] text-[#e1e1e1]'>
                     01
@@ -30,7 +30,8 @@ function Upcoming() {
             </div>
         </div>
         
-        <div className='flex items-center justify-between mt-5'>
+        
+        <div className='hidden lg:flex items-center justify-between mt-5'>
             <div className='w-[400px] h-2 bg-[#aeaeae] rounded-lg'>
                 <span className='w-[80px] h-2 bg-white rounded-lg block'></span>
             </div>
