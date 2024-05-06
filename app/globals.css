@@ -20,3 +20,27 @@ body {
   width: 100%;
   height: 500px;
 }
+
+/* Style the range slider */
+input[type="range"] {
+  -webkit-appearance: none; /* Remove default styles */
+  width: 100%;
+  margin: 10px 0;
+  height: 4px;
+  border-radius: 4px;
+  background-color: #d9d9d9; /* Grey background */
+}
+
+/* Style the thumb for WebKit based browsers */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: black; /* Black thumb */
+  border-radius: 50%; /* Circle shape */
+}
+/* Style the output */
+output {
+  display: block;
+  margin-top: 10px;
+}

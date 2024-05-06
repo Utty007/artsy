@@ -1,11 +1,13 @@
 import React from 'react'
 import MailIcon from '../Assets/Icons/MailIcon';
 import LocationIcon from '../Assets/Icons/LocationIcon';
+import Sub from './Sub';
 
 function Footer() {
   return (
-    <footer className='mx-16 pb-6'>
-        <div className='flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-0 justify-between'>
+    <footer className='pb-6'>
+        <Sub />
+        <div className='flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-0 justify-between mx-16'>
             <h1 className='text-4xl font-bold uppercase text-[#292929] leading-[60px]'>Artsy.</h1>
            
              <ul>

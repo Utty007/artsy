@@ -5,7 +5,6 @@ import Upcoming from '../Components/Upcoming';
 import Image from 'next/image';
 import arrowIcon from '@/app/Assets/Icons/arrowIcon.png';
 import Section from '../Components/Section';
-import Sub from '../Components/Sub';
 
 function Main() {
   return (
@@ -28,12 +27,11 @@ function Main() {
           </div>
         </div>
         <Section />
-        <Sub />
       </div>
   )
 }
 
-export default Main
+export default Main;
 
 ///* Photography is poetry & beautiful untold stories */
 
