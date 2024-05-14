@@ -14,20 +14,19 @@ import Link from 'next/link';
 
 function ProductsList() {
     const Products = [
-        { name: "PHILOMENA '22", img: ProductImgOne, id: 'philomena22' },
-        { name: 'BOOLEAN EGYPTIAN', img: ProductImgTwo, id: 'boolegyptian' },
-        { name: 'BLANC', img: ProductImgThree, id: 'blanc' },
-        { name: 'ELLIPSIA', img: ProductImgFour, id: 'ellipsia' },
-        { name: 'THE LAWMAKERS', img: ProductImgFive, id: 'thelawmakers' },
-        { name: 'VEIL', img: ProductImgSix, id: 'veil' },
-        { name: 'ALTERNATING', img: ProductImgSeven, id: 'alternating' },
-        { name: "ROSEMARY '22", img: ProductImgEight , id: 'rosemary22'},
-        { name: 'BEVERLY', img: ProductImgNine, id: 'beverly' }
+        { name: "Philomena '22", img: ProductImgOne, id: 'philomena22', price: 250 },
+        { name: 'Boolean Egyptian', img: ProductImgTwo, id: 'boolegyptian', price: 200 },
+        { name: 'Blanc', img: ProductImgThree, id: 'blanc', price: 360 },
+        { name: 'Ellipsia', img: ProductImgFour, id: 'ellipsia', price: 250 },
+        { name: 'The Lawmakers', img: ProductImgFive, id: 'thelawmakers', price: 250 },
+        { name: 'Veil', img: ProductImgSix, id: 'veil', price: 125 },
+        { name: 'Alternating', img: ProductImgSeven, id: 'alternating', price: 230 },
+        { name: "Rosemary '22", img: ProductImgEight , id: 'rosemary22', price: 320},
+        { name: 'Beverly', img: ProductImgNine, id: 'beverly', price: 170 }
     ]
     const [spliceNum, setSpliceNum] = useState(6)
     const [SMV, setSMV] = useState(true)
     const seeMore = () => { 
-        console.log('Clicked');
         setSpliceNum(9);
         setSMV(false)
     }
@@ -41,7 +40,7 @@ function ProductsList() {
                 </div>
                 <div>
                     <h3 className='text-xl my-2'>{items.name}</h3>
-                    <h3 className='text-2xl font-bold'>{`$3.90`}</h3>
+                    <h3 className='text-2xl font-bold'>${items.price}</h3>
                 </div>
             </Link>
         })}
