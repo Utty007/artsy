@@ -1,13 +1,24 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CartItem from './Components/CartItem';
 import Link from 'next/link';
 import { useCartStore } from '../Store/CartStore';
 
 function page() {
-    const [cart, totalPrice] = useCartStore(state => [state.cartItems, state.totalPrice]);
-    let price = totalPrice + 12
+    const [cart] = useCartStore(state => [state.cartItems]);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const price = totalPrice + 12
+    useEffect(()=> {
+            const calculateTotalPrice = (cartItems) => {
+            let totalPrice = 0;
+            cartItems.forEach(item => {
+                totalPrice += item.product.price * item.quantity;
+            });
+            setTotalPrice(totalPrice)
+        }
+        calculateTotalPrice(cart)
+    }, [cart])
   return (
       <>
           {cart.length === 0 ? <div className='text-center text-2xl font-bold my-28'>There are no items in the cart.</div>

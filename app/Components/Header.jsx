@@ -1,9 +1,81 @@
+'use client'
+import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import EmptyCart from '../Assets/Icons/EmptyCart';
 import CartIcon from "../Assets/Icons/CartIcon";
-import NotificationIcon from "../Assets/Icons/NotificationIcon";
 import SearchIcon from "../Assets/Icons/SearchIcon";
+import ProfileIcon from '@/app/Assets/Icons/profileIcon.png';
+import { useCartStore } from '../Store/CartStore';
+import { getAuth } from 'firebase/auth';
+import { app } from '../Auth/firebase';
+import { getDatabase, ref, get } from 'firebase/database';
+// import { FetchCartData } from '../Auth/firebaseService';
 
 function Header() {
+  const [cartItems, userId, setUserId, setUserInfo, setCartItems] = useCartStore(state => [state.cartItems, state.userId, state.setUserId, state.setUserData, state.setCartItems]);
+  
+  useEffect(() => {
+    const auth = getAuth(app);
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // If user is logged in, fetch user data
+        setUserId(user.uid);
+        const FetchCartData = async (userId) => {
+          // const [setCartItems] = useCartStore((state) => [state.setCartItems]);
+          try {
+            const db = getDatabase();
+            const userCartRef = ref(db, `user-cart/${userId}`);
+
+            // Fetch the data at the user-cart reference
+            const dataSnapshot = await get(userCartRef);
+            // Check if the data exists
+            if (dataSnapshot.exists()) {
+              // Data exists, retrieve the data
+              const userData = dataSnapshot.val();
+              setCartItems(userData.cartItems);
+              // return userData;
+            } else {
+              // Data doesn't exist
+            }
+          } catch (error) {
+            console.error("Error fetching user data:", error);
+            return null;
+          }
+        };
+
+        FetchCartData(user.uid);
+      } else {
+        // If user is not logged in, clear user data
+        setUserId(null);
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup function for the authentication listener
+  }, []);
+
+  useEffect(() => {
+    const fetchUserData = async (userId) => {
+      try {
+        const db = getDatabase();
+        const userRef = ref(db, `users/${userId}`);
+        const snapshot = await get(userRef);        
+        if (snapshot.exists()) {
+          const userData = snapshot.val();
+          setUserInfo(userData);
+        } else {
+          //That is not data is available for this user
+        }
+      } catch (error) {
+        console.log("Error reading user data:", error.message);
+      }
+    };
+
+    if (userId !== null) {
+      fetchUserData(userId);
+    }
+  }, [userId]);
+
   return (
     <header className="flex items-center justify-between px-6 py-3">
       <div className='lg:hidden'>
@@ -18,27 +90,22 @@ function Header() {
       </div>
       <h1 className="text-xl font-bold">ARTSY.</h1>
       <nav className="hidden lg:flex items-center gap-5">
-        <span><Link href="/" className="transition-all focus:text-zinc-950 focus:font-bold hover:underline text-zinc-600">Home</Link></span>
-        <span><Link href="/Marketplace" className="transition-all focus:text-zinc-950 focus:font-bold hover:underline text-zinc-600">Marketplace</Link></span>
-        <span><Link href="/Auctions" className="transition-all focus:text-zinc-950 focus:font-bold hover:underline text-zinc-600">Auctions</Link></span>
-        <span><Link href="/Drops" className="transition-all focus:text-zinc-950 focus:font-bold hover:underline text-zinc-600">Drops</Link></span>
+        <Link href="/" className="transition-all active:text-zinc-950 active:font-bold hover:underline text-zinc-600">Home</Link>
+        <Link href="/Marketplace" className="transition-all active:text-zinc-950 active:font-bold hover:underline text-zinc-600">Marketplace</Link>
+        <Link href="/Auctions" className="transition-all active:text-zinc-950 active:font-bold hover:underline text-zinc-600">Auctions</Link>
+        <Link href="/Drops" className="transition-all active:text-zinc-950 active:font-bold hover:underline text-zinc-600">Drops</Link>
       </nav>
       <div className="flex items-center">
         <SearchIcon />
-        <CartIcon />
-        <span className='hidden lg:block'>
-          <NotificationIcon />
-        </span>
+        <Link href='/Cart'>
+          {cartItems.length === 0 ? <EmptyCart /> : <CartIcon />}
+        </Link>
+        <Link href='/Profile' className='hidden lg:block'>
+          <Image src={ProfileIcon} width={39} height={39} className='cursor-pointer p-1' alt='Profile icon' />
+        </Link>
       </div>
     </header>
-  )
+  );
 }
 
 export default Header;
-
-
-/* 
-What to learn as a Blockchain Developer
-Solidity Programming Language - Main Language for writing ETH smart contracts.
-
-*/
