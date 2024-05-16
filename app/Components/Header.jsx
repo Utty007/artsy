@@ -13,7 +13,7 @@ import { getDatabase, ref, get } from 'firebase/database';
 // import { FetchCartData } from '../Auth/firebaseService';
 
 function Header() {
-  const [cartItems, userId, setUserId, setUserInfo, setCartItems] = useCartStore(state => [state.cartItems, state.userId, state.setUserId, state.setUserData, state.setCartItems]);
+  const [cartItems, userId, setUserId, setUserInfo, setCartItems, setCartIsLoading] = useCartStore(state => [state.cartItems, state.userId, state.setUserId, state.setUserData, state.setCartItems, state.setCartIsLoading]);
   
   useEffect(() => {
     const auth = getAuth(app);
@@ -22,6 +22,7 @@ function Header() {
         // If user is logged in, fetch user data
         setUserId(user.uid);
         const FetchCartData = async (userId) => {
+          setCartIsLoading(true)
           // const [setCartItems] = useCartStore((state) => [state.setCartItems]);
           try {
             const db = getDatabase();
@@ -34,11 +35,14 @@ function Header() {
               // Data exists, retrieve the data
               const userData = dataSnapshot.val();
               setCartItems(userData.cartItems);
+              setCartIsLoading(false)
               // return userData;
             } else {
               // Data doesn't exist
+              setCartIsLoading(false)
             }
           } catch (error) {
+            setCartIsLoading(false)
             console.error("Error fetching user data:", error);
             return null;
           }
@@ -47,6 +51,7 @@ function Header() {
         FetchCartData(user.uid);
       } else {
         // If user is not logged in, clear user data
+        setCartIsLoading(false)
         setUserId(null);
       }
     });
@@ -109,3 +114,10 @@ function Header() {
 }
 
 export default Header;
+
+
+// Design a letterhead paper (add a watermark of the company name) for your company, and complementary card.
+// Then write a quotation to deliver an IT service in the same letterhead paper.
+// The letter should calculate the cost and expenses.
+// Assign your signature on behalf of the company.
+// submit to sbankole@lagosstate.gov.ng

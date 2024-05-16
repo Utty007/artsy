@@ -6,24 +6,25 @@ import Link from 'next/link';
 import { useCartStore } from '../Store/CartStore';
 
 function page() {
-    const [cart] = useCartStore(state => [state.cartItems]);
+    const [cart, cartIsLoading, setCartIsLoading] = useCartStore(state => [state.cartItems, state.cartIsLoading, state.setCartIsLoading]);
     const [totalPrice, setTotalPrice] = useState(0);
     const price = totalPrice + 12
-    useEffect(()=> {
-            const calculateTotalPrice = (cartItems) => {
-            let totalPrice = 0;
-            cartItems.forEach(item => {
-                totalPrice += item.product.price * item.quantity;
-            });
-            setTotalPrice(totalPrice)
-        }
+    useEffect(() => {
+        const calculateTotalPrice = (cartItems) => {
+        let totalPrice = 0;
+        cartItems.forEach(item => {
+            totalPrice += item.product.price * item.quantity;
+        });
+        setTotalPrice(totalPrice)
+      }
         calculateTotalPrice(cart)
     }, [cart])
   return (
       <>
-          {cart.length === 0 ? <div className='text-center text-2xl font-bold my-28'>There are no items in the cart.</div>
+          {cartIsLoading && <span className="loading loading-spinner loading-lg block m-auto"></span>}
+          {!cartIsLoading && cart.length === 0 ? <div className='text-center text-2xl font-bold my-28'>There are no items in the cart.</div>
               :
-          <div className='px-12'>
+            !cartIsLoading && <div className='px-12'>
             {cart.map((items, index) => {
                return <CartItem key={index} props={items} />
             })}

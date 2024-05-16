@@ -48,7 +48,6 @@ export const useCartStore = create((set, get) => ({
     updateUserData(get().userId, get().cartItems);
   },
   deleteFromCart: (cartItem) => {
-    console.log("Got here");
     // Calculate the price of the item to be deleted
     const itemToDelete = get().cartItems.find(
       (item) => item.product.id === cartItem.product.id
@@ -56,7 +55,6 @@ export const useCartStore = create((set, get) => ({
 
     // Ensure that the item to delete exists
     if (itemToDelete) {
-      console.log(itemToDelete);
       const itemToDeletePrice =
         itemToDelete.product.price * itemToDelete.quantity;
 
@@ -70,7 +68,6 @@ export const useCartStore = create((set, get) => ({
     }
 
     // Call updateUserData after deleting item from cart
-    console.log(get().cartItems);
     updateUserData(get().userId, get().cartItems);
   },
   userData: null,
@@ -79,6 +76,10 @@ export const useCartStore = create((set, get) => ({
   },
   setCartItems: (cartItems) => {
     set({ cartItems: cartItems });
+  },
+  cartIsLoading: true,
+  setCartIsLoading: (bool) => {
+    set({ cartIsLoading: bool });
   },
 }));
 

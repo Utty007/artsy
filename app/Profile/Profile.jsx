@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 function Profile() {
     const [userInfo, setUserInfo, setCartItems] = useCartStore(state => [state.userData, state.setUserData, state.setCartItems]);
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+    const [status, setStatus] = useState(null)
+    const [message, setMessage] = useState(null)
     const [progressWidth, setProgressWidth] = useState('100%'); // State to control the width of the progress bar
 
     const auth = getAuth(app);
@@ -17,11 +19,14 @@ function Profile() {
         signOut(auth).then(() => {
             setUserInfo(null);
             setCartItems([]);
+            setStatus('success')
+            setMessage('User Signed Out Successfully.')
             setShowSuccessAlert(true);
-            setProgressWidth('0%'); // Reset the progress bar width
-            console.log('Sign-out successful');
         }).catch((error) => {
-            // An error happened.
+            if (error) {
+                setStatus('error')
+                setMessage('An error occured, please try again later.')
+            }
         });
     }
 
@@ -34,11 +39,11 @@ function Profile() {
             // Update progress bar width every 100ms until it reaches 0%
             const interval = setInterval(() => {
                 setProgressWidth(prevWidth => {
-                    const newWidth = parseInt(prevWidth) - 1 + '%';
+                    const newWidth = parseInt(prevWidth) - .5 + '%';
                     if (newWidth === '0%') clearInterval(interval);
                     return newWidth;
                 });
-            }, 100);
+            }, 50);
 
             // Clear interval and timeout on component unmount or when alert is hidden
             return () => {
@@ -70,17 +75,15 @@ function Profile() {
             }
 
             {/* Success alert with progress bar */}
-            {showSuccessAlert && 
-                <div role="alert" className="alert alert-success fixed bottom-0 right-0 m-4 p-3 w-[500px] text-white shadow-lg">
-                    <div className="progress" style={{ width: progressWidth }}></div> {/* Progress bar */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6 absolute left-0 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>User Successfully Logged Out!</span>
+            { showSuccessAlert &&
+                <div role="alert" className={`alert alert-${status} absolute bottom-5 right-5 w-[400px] overflow-hidden text-white shadow-lg`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span>{message}</span>
+                    <div className="progress bg-white absolute bottom-0" style={{width: progressWidth}} ></div>
                 </div>
             }
         </div>
     );
 }
-
 export default Profile;
+//showSuccessAlert && 
