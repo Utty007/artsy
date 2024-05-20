@@ -16,13 +16,13 @@ function Main() {
         <Carousel infiniteLoop />
         <Products />
         <Upcoming />
-        <div className='my-24'>
-          <div className='flex items-center justify-between border border-y-black border-transparent p-8'>
-            <h2 className='text-4xl'>Explore Marketplace</h2>
+        <div className='my-16 md:my-24'>
+          <div className='flex items-center justify-between border border-y-black border-transparent p-4 md:p-8'>
+            <h2 className='text-2xl md:text-4xl'>Explore Marketplace</h2>
             <Image src={arrowIcon} alt='Arrow Icon' />
           </div>
-          <div className='flex items-center justify-between border border-transparent border-b-black p-8'>
-            <h2 className='text-4xl'>See Auctions</h2>
+          <div className='flex items-center justify-between border border-transparent border-b-black p-4 md:p-8'>
+            <h2 className='text-2xl md:text-4xl'>See Auctions</h2>
             <Image src={arrowIcon} alt='Arrow Icon' />
           </div>
         </div>

@@ -21,18 +21,16 @@ function Upcoming() {
                     <span>
                         Start on : 08:00 GTS . Monday 
                     </span>
-                    <p className='text-xs md:text-lg font-normal md:font-medium'>
+                    <p className='text-xs mb-6 md:mb-0 md:text-lg font-normal md:font-medium'>
                         GET EXCLUSIVE VIEWING OF CONTEMPORARY ART AND CONNECT WITH <br className='hidden md:block' /> INVESTORS AND AUCTIONEERS ACROSS THE WORLD BRINGING THEIR <br className='hidden md:block'/> HIGHEST AND LOWEST BIDS.
                     </p>
                 </div>
             </div>
             <div className='flex items-center gap-3'>
-                <h2 className='underline text-xl'>See More</h2>
-                <button className='border rounded-xl border-white p-3'>Set A Reminder</button>
+                <h2 className='underline text-lg md:text-xl'>See More</h2>
+                <button className='border text-lg md:text-xl rounded-xl border-white p-2 md:p-3'>Set A Reminder</button>
             </div>
         </div>
-        
-        
         <div className='hidden lg:flex items-center justify-between mt-5'>
             <div className='w-[400px] h-2 bg-[#aeaeae] rounded-lg'>
                 <span className='w-[80px] h-2 bg-white rounded-lg block'></span>
