@@ -10,7 +10,7 @@ function Section() {
               <li>Lifestyle</li>
         </div>
         <div className='flex items-start justify-between'>
-            <h2 className='text-[#161616] text-2xl md:text-5xl font-semibold'>TOP CREATORS OF <br /> THE WEEK</h2>
+            <h2 className='text-[#161616] text-2xl mt-5 md:mt-0 md:text-5xl font-semibold'>TOP CREATORS OF <br /> THE WEEK</h2>
             <div className='md:flex items-center gap-4 hidden'>
                 <div className='h-48 bg-[#aeaeae] w-1 rounded-lg flex items-end'><span className='h-8 bg-[#292929] block rounded-lg w-1'></span></div>
                 <div className='flex flex-col gap-2'>
@@ -21,7 +21,7 @@ function Section() {
                 </div>
             </div>
         </div>
-        <div className='absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] m-auto bottom-0 right-0'>
+        <div className='absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] m-auto md:left-0 bottom-0 right-0'>
             <Slideshow />
         </div>
         <div className='w-[80%] m-auto'>

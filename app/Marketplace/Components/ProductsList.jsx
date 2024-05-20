@@ -31,7 +31,7 @@ function ProductsList() {
         setSMV(false)
     }
   return (
-    <div className='md:max-w-[925px] w-full px-6'>
+    <div className='md:max-w-[925px] w-full md:px-6'>
         <div className='flex flex-col w-full md:w-auto md:flex-row items-center justify-between flex-wrap '>
             {Products.splice(0, spliceNum).map((items, index)=> {
             return <Link href={`/Marketplace/${items.id}`} key={index} className='bg-white w-full md:w-[250px] shadow-md p-2 rounded-md mb-6'>
