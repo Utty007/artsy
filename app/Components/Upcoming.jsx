@@ -16,10 +16,10 @@ function Upcoming() {
                 </div>
                 <div className='flex flex-col gap-10 md:gap-4'> 
                     <div className='flex items-center gap-4'>
-                        <li className='text-xl md:text-3xl block md:list-item text-[#e1e1e1] relative left-[-40px]'>MONALISA REDEFINED IN STYLE</li>
+                        <li className='text-lg md:text-3xl block md:list-item text-[#e1e1e1] relative left-[-40px]'>MONALISA REDEFINED IN STYLE</li>
                     </div>
                     <span>
-                        Start on : 08:00 GTS . Monday 
+                        Start on 08:00 GTS Monday 
                     </span>
                     <p className='text-xs mb-6 md:mb-0 md:text-lg font-normal md:font-medium'>
                         GET EXCLUSIVE VIEWING OF CONTEMPORARY ART AND CONNECT WITH <br className='hidden md:block' /> INVESTORS AND AUCTIONEERS ACROSS THE WORLD BRINGING THEIR <br className='hidden md:block'/> HIGHEST AND LOWEST BIDS.
