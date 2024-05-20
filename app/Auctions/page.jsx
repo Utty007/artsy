@@ -18,9 +18,6 @@ function page() {
       <div className='flex items-center gap-6 flex-wrap justify-between'>
         <div>
           <div className='flex gap-2 flex-col bg-white rounded-md shadow-md px-4 py-3 max-w-[545px]'>
-            <div className='flex justify-end'>
-                <HeartSk className='p-3 rounded-full border border-black' />
-            </div>
             <Image src={prodImgOne} alt='Slider Image' />
             <div>
                 <h3 className='font-medium text-xl'>
@@ -32,22 +29,19 @@ function page() {
           <h3 className='text-[#616161] font-medium mt-6'>Creator: <span className='text-black'>Dan Murray</span></h3>
           <h3 className='text-[#616161] font-medium mt-6'>Date: <span className='text-black'>12/08/22</span></h3>
           <h3 className='text-[#616161] font-medium mt-6 mb-6'>Highest Bid: <span className='text-black'>0.57 ETH</span></h3>
-          <div className='flex items-center gap-2 w-[200px] bg-[#f6f4f4] p-3 flex-grow'>
+          <div className='flex items-center justify-between md:justify-normal gap-2 w-full md:w-[200px] bg-[#f6f4f4] p-3 flex-grow'>
             <div>
               <h3 className='text-[#616161] font-medium'>Current Bid</h3>
               <p className='text-black font-medium'>0.987 ETH</p>
             </div>
-            <button className='p-2 bg-black text-white rounded-sm'>
+            <button className='p-2 bg-black block text-white rounded-sm'>
               Place bid
             </button>
           </div>
         </div>
       </div>
-      <div>
+      <div className='mb-9'>
           <div className='flex gap-2 flex-col bg-white rounded-md shadow-md px-4 py-3 max-w-[545px]'>
-          <div className='flex justify-end'>
-              <HeartSk className='p-3 rounded-full border border-black' />
-          </div>
           <Image src={prodImgTwo} alt='Slider Image' />
           <div>
               <h3 className='font-medium text-xl'>
@@ -59,7 +53,7 @@ function page() {
           <h3 className='text-[#616161] font-medium mt-6'>Creator: <span className='text-black'>Jacob Banks</span></h3>
           <h3 className='text-[#616161] font-medium mt-6'>Date: <span className='text-black'>12/08/22</span></h3>
           <h3 className='text-[#616161] font-medium mt-6 mb-6'>Highest Bid: <span className='text-black'>0.34 ETH</span></h3>
-          <div className='flex items-center gap-2 w-[200px] bg-[#f6f4f4] p-3 flex-grow'>
+          <div className='flex justify-between md:justify-normal items-center gap-2 w-full md:w-[200px] bg-[#f6f4f4] p-3 flex-grow'>
             <div>
               <h3 className='text-[#616161] font-medium'>Current Bid</h3>
               <p className='text-black font-medium'>0.99 ETH</p>
