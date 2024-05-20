@@ -9,9 +9,9 @@ import Section from '../Components/Section';
 function Main() {
   return (
       <div className='w-full'>
-        <div className='max-w-[70%] m-auto'>
-          <h1 className='text-6xl text-center text-[#292929] font-[500] leading-snug mt-14'>Photography is poetry & beautiful <br />untold stories</h1>
-          <p className='text-center text-2xl font-[500] font-Satoshi'>Flip through more than 10,000 vintage shots, old photograghs, historic images and captures seamlessly in one place. Register to get top access.</p>
+        <div className='md:max-w-[70%] max-w-[90%] m-auto'>
+          <h1 className='md:text-6xl text-3xl text-center text-[#292929] font-[500] leading-snug mt-14'>Photography is poetry and beautiful <br className='hidden md:block' />untold stories</h1>
+          <p className='text-center md:text-2xl text-[16px] font-[500] font-Satoshi mt-5'>Flip through more than 10,000 vintage shots, old photograghs, historic images and captures seamlessly in one place. Register to get top access.</p>
         </div>
         <Carousel infiniteLoop />
         <Products />

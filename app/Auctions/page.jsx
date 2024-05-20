@@ -8,7 +8,7 @@ import HeartSk from '../Assets/Icons/HeartSk';
 
 function page() {
   return (
-    <div className='px-12'>
+    <div className='px-2 md:px-12'>
       <h3 className='pt-5 font-medium'><span className='font-light'>Home/</span> Auctions</h3>
       <h3 className='py-5 font-medium text-xl'>Here's an overview of products actively on auction, explore!</h3>
       <Carousel />

@@ -29,11 +29,9 @@ const BarTimer = ({ initialTime }) => {
   };
 
   return (
-    <div className="absolute left-[115px] bottom-8 p-5 flex items-center h-8 bg-white bg-opacity-50 border border-white">
-      <div className="flex items-center justify-center text-white font-bold">
+      <div className="left-0 right-0 absolute w-fit m-auto bottom-12 flex items-center justify-center text-white font-bold bg-white bg-opacity-50 border border-white p-1">
         {formatTime(timeLeft)}
       </div>
-    </div>
   );
 };
 

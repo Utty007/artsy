@@ -56,9 +56,11 @@ function page() {
   return (
     <div className='px-6'>
       <h3 className='my-6'>Home/Marketplace/Editorials/<span className='font-medium'>{product.name}</span></h3>
+
+      <Image className='block mb-5 md:hidden m-auto w-full' src={product.img} alt='Product Image' />
       <table className='border border-black m-auto'>
         <tr className='border border-black h-[65px]'>
-          <td rowSpan={5} className='p-4 border border-black'>
+          <td rowSpan={5} className='p-4 hidden md:table-cell border border-black'>
             <Image src={product.img} alt='Product Image' height={400} />
           </td>
           <td rowSpan={1} className='flex items-center justify-between gap-8 p-2'>
@@ -103,7 +105,7 @@ function page() {
         </tr>
       </table>
 
-      <div className='flex items-center justify-between w-9/12 mx-auto shadow-lg p-4 rounded-md my-7'>
+      <div className='flex items-center justify-between w-full md:w-9/12 mx-auto shadow-lg p-4 rounded-md my-7'>
         <h3 className='font-medium'>Explore more from this collection</h3>
         <div className='flex items-center gap-4'>
           <span className='border border-[#616161] rounded-full p-2'>

@@ -10,10 +10,11 @@ import arrowIcon from '@/app/Assets/Icons/arrowIcon.png'
 function ProductItem(props) {
   return (
     <div className={props.className}>
-        <Image width={600} height={300} src={props.Image} alt="Product Image" />
+        <Image src={props.mImage} className='block md:hidden' alt='Product Image'/>
+        <Image src={props.Image} className='hidden md:block' alt="Product Image" />
         <div className='max-w-[600px] flex flex-col gap-5'>
-            <h1 className='text-[#333] text-4xl font-medium'>{props.name}</h1>
-            <p className=' text-xl font-normal leading-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur</p>
+            <h1 className='text-[#333] hidden md:block text-4xl font-medium'>{props.name}</h1>
+            <p className='text-lg md:text-xl font-normal leading-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur</p>
             <div className='flex items-center gap-9'>
                 <div className='flex items-center'>
                     <span className='flex items-center'>
@@ -25,7 +26,7 @@ function ProductItem(props) {
                     </span>
                     <span className='relative left-[-70px]'>64 Major Creators</span>
                 </div>
-                <div>
+                <div className='hidden md:block'>
                     <Image src={arrowIcon} alt='Arrow Icon' />
                 </div>
             </div>

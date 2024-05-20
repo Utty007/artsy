@@ -45,7 +45,7 @@ function Checkout() {
     }
     
     return (
-        <div className='text-center bg-black text-white p-5 rounded-md w-[500px] m-auto'>
+        <div className='text-center bg-black text-white p-5 rounded-md w-[350px] md:w-[500px] m-auto'>
             <h3 className='text-2xl'>Product Summary</h3>
             {cart.length !== 0 ? <>
                 <h2 className='mt-2 mb-3'>Number of items: {cart.length}</h2>

@@ -7,16 +7,16 @@ function Footer() {
   return (
     <footer className='pb-6'>
         <Sub />
-        <div className='flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-0 justify-between mx-16'>
-            <h1 className='text-4xl font-bold uppercase text-[#292929] leading-[60px]'>Artsy.</h1>
-           
-             <ul>
+        <div className='flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-0 justify-between mx-8 md:mx-16'>
+            <h1 className='text-4xl hidden md:block font-bold uppercase text-[#292929] leading-[60px]'>Artsy.</h1>
+            <h2 className='text-xl font-medium block md:hidden'>REACH US</h2>
+             <ul className='hidden md:block'>
                <li className='text-xl leading-9 font-normal'>Home</li>
                <li className='text-xl leading-9 font-normal'>Marketplace</li>
                <li className='text-xl leading-9 font-normal'>Auctions</li>
                <li className='text-xl leading-9 font-normal'>Drops</li>
             </ul>
-            <ul>
+            <ul className='hidden md:block'>
                 <li className='text-xl leading-9 font-normal'>Blog</li>
                 <li className='text-xl leading-9 font-normal'>Wallets</li>
                 <li className='text-xl leading-9 font-normal'>Rates</li>
@@ -31,7 +31,7 @@ function Footer() {
                 </div>
             </div>
            </div>
-        <h3 className='text-center text-xl font-medium text-[#333] mt-8'>Artsystudios &copy; 2022. All Rights Reserved.</h3>
+        <h3 className='hidden md:block text-center text-xl font-medium text-[#333] mt-8'>Artsystudios &copy; 2022. All Rights Reserved.</h3>
     </footer>
   )
 }

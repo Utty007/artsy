@@ -3,7 +3,7 @@ import Checkout from './Checkout';
 
 function page() {
   return (
-    <div>
+    <div className='p-4'>
         <Checkout />
     </div>
   )

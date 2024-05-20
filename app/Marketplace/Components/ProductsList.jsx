@@ -31,14 +31,14 @@ function ProductsList() {
         setSMV(false)
     }
   return (
-    <div className='max-w-[925px] px-6'>
-        <div className='flex items-center justify-between flex-wrap '>
+    <div className='md:max-w-[925px] w-full px-6'>
+        <div className='flex flex-col w-full md:w-auto md:flex-row items-center justify-between flex-wrap '>
             {Products.splice(0, spliceNum).map((items, index)=> {
-            return <Link href={`/Marketplace/${items.id}`} key={index} className='bg-white shadow-md p-2 rounded-md mb-6'>
+            return <Link href={`/Marketplace/${items.id}`} key={index} className='bg-white w-full md:w-[250px] shadow-md p-2 rounded-md mb-6'>
                 <div>
-                    <Image src={items.img} alt='Product Image' />
+                    <Image src={items.img} className='w-full' alt='Product Image' />
                 </div>
-                <div>
+                <div className='flex items-center justify-between md:block'>
                     <h3 className='text-xl my-2'>{items.name}</h3>
                     <h3 className='text-2xl font-bold'>${items.price}</h3>
                 </div>

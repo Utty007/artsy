@@ -10,7 +10,7 @@ function Filter() {
     setPrice(event.target.value);
   };
   return (
-    <div className='pl-6'>
+    <div className='hidden md:block pl-6'>
         <div className='flex items-center text-2xl font-medium'>
             <FilterIcon /> Filter
         </div>

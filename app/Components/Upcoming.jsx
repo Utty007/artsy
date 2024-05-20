@@ -6,21 +6,23 @@ import RightArrowIcon from '../Assets/Icons/RightArrowIcon';
 
 function Upcoming() {
   return (
-    <div className='gradientBg w-full mt-20 px-12 pt-5 pb-8 text-[#fff]'>
-        <h1 className='text-3xl font-medium leading-[50px]'>See Upcoming Auctions And Exhibitions</h1>
-        <Image src={Arrow} alt='Arrow' width={450} className='relative left-[50px] pb-4' />
-        <div className='imageBg flex flex-col lg:flex-row items-end justify-between p-9'>
-            <div className='flex items-center gap-4'>
-                <div className='text-6xl leading-[80px] text-[#e1e1e1]'>
+    <div className='gradientBg w-full mt-20 px-12 py-12 md:pt-5 md:pb-8 text-[#fff]'>
+        <h1 className='text-3xl hidden md:block font-medium leading-[50px]'>See Upcoming Auctions And Exhibitions</h1>
+        <Image src={Arrow} alt='Arrow' width={450} className='relative hidden md:block left-[50px] pb-4' />
+        <div className='imageBg md:height-[500px] flex flex-col lg:flex-row items-end justify-between p-9'>
+            <div className='flex items-center flex-row gap-4'>
+                <div className='text-4xl md:text-6xl leading-[80px] text-[#e1e1e1]'>
                     01
                 </div>
-                <div className='flex flex-col gap-4'> 
-                    <li className='text-3xl text-[#e1e1e1] relative left-[-40px]'>MONALISA REDEFINED IN STYLE</li>
+                <div className='flex flex-col gap-10 md:gap-4'> 
+                    <div className='flex items-center gap-4'>
+                        <li className='text-xl md:text-3xl block md:list-item text-[#e1e1e1] relative left-[-40px]'>MONALISA REDEFINED IN STYLE</li>
+                    </div>
                     <span>
                         Start on : 08:00 GTS . Monday 
                     </span>
-                    <p className='text-lg font-medium'>
-                        GET EXCLUSIVE VIEWING OF CONTEMPORARY ART AND CONNECT WITH <br /> INVESTORS AND AUCTIONEERS ACROSS THE WORLD BRINGING THEIR <br /> HIGHEST AND LOWEST BIDS.
+                    <p className='text-xs md:text-lg font-normal md:font-medium'>
+                        GET EXCLUSIVE VIEWING OF CONTEMPORARY ART AND CONNECT WITH <br className='hidden md:block' /> INVESTORS AND AUCTIONEERS ACROSS THE WORLD BRINGING THEIR <br className='hidden md:block'/> HIGHEST AND LOWEST BIDS.
                     </p>
                 </div>
             </div>

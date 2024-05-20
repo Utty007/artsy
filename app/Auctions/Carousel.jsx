@@ -10,9 +10,19 @@ import "slick-carousel/slick/slick-theme.css";
 import BarTimer from './BarTimer';
 
 function Carousel() {
+  const settings = [{
+    breakpoint: 768, 
+    settings: {
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      speed: 500,
+      infinite: true,
+      dots: true
+    }
+  }]
   return (
     <div className="slider-container">
-      <Slider dots={true} infinite={true} speed={500} slidesToShow={3} slidesToScroll={1}>
+      <Slider dots={true} infinite={true} speed={500} slidesToShow={3} slidesToScroll={1} responsive={settings}>
         <div className="w-[400px] relative">
           <Image alt='Product Image' width={400} height={300} src={bidImgOne} />
           <BarTimer initialTime={300000} />

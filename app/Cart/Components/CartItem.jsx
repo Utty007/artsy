@@ -42,19 +42,22 @@ function CartItem(props) {
 
   return (
       <div>
-        <div className='flex items-center justify-between gap-8 flex-wrap py-4'>
+        <div className='flex items-center justify-between gap-8 py-4'>
         <div className='flex items-center gap-8'>
-            <Image src={props.props.product.img} alt="Product Image" width={200} height={200} />
+            <Image src={props.props.product.img} className='w-[100px] h-[100px] md:w-[200px] md:h-[200px]' alt="Product Image"  />
             <div className='flex flex-col gap-3'>
                 <h3 className='text-xl font-medium'>{props.props.product.name}</h3>
                 <p>Clearamane</p>
                 <p>size: 200ft</p>
-                <div className='flex items-center gap-2'><button onClick={()=> {reductionHandler()}}>-</button><span>{props.props.quantity}</span><button onClick={()=> {addToCartHandler()}}>+</button></div>
+                <div className='flex items-center'>
+                    <button className='border md:border-none border-black rounded-l-md py-1 px-2' onClick={()=> {reductionHandler()}}>-</button>
+                    <span className='border md:border-none border-black py-1 px-2'>{props.props.quantity}</span>
+                    <button onClick={()=> {addToCartHandler()}} className='border md:border-none py-1 px-2 border-black rounded-r-md'>+</button></div>
             </div>
         </div>
         <div className='flex flex-col gap-12 justify-between items-center'>
             <Delete onClick={()=> {deleteHandler()}} />
-            <h3 className='text-2xl font-bold'>
+            <h3 className='text-xl md:text-2xl font-medium md:font-bold'>
                 ${props.props.product.price * props.props.quantity}
             </h3>
         </div>
