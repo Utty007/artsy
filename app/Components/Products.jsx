@@ -16,7 +16,7 @@ function Products() {
         name: "Oloibiri 1997", image: productThree, mImage: imgThree
     }]
   return (
-    <div className='mx-14 mt-24'>
+    <div className='mx-5 md:mx-14 mt-24'>
         <h1 className='text-[#333] md:text-5xl text-2xl leading-[64px] font-medium py-3'>Featured Products</h1>
         <hr />
       <ProductItem className='flex flex-col flex-wrap gap-5 lg:flex-row items-center justify-between p-8 border border-transparent border-t-black' name={productData[0].name} Image={productData[0].image} mImage={productData[0].mImage}/>
