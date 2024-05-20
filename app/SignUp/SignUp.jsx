@@ -98,39 +98,43 @@ function SignUp() {
     }
 
     return (
-        <div className='w-[800px] m-auto my-12'>
-            <h3 className='text-center font-medium text-2xl mb-4'>Welcome to Artsy</h3>
-            <form onSubmit={SignUpHandler}>
-                <div className='flex items-center justify-between flex-wrap'>
-                    <div className='flex items-center gap-2'>
+        <div className='md:w-[800px] md:m-auto my-12'>
+            <h3 className='ml-6 md:ml-0 text-center font-medium text-2xl mb-4'>Welcome to Artsy</h3>
+            <form className='flex flex-col gap-4 px-8' onSubmit={SignUpHandler} autoComplete='off'>
+                <div className='flex flex-col md:flex-row items-left md:items-center justify-between gap-4 flex-row-wrap'>
+                    <div className='flex flex-row items-center gap-2'>
                         <label className='font-medium text-xl' htmlFor="fname">First Name</label>
                         <input type="text" name="fname" id="fname" ref={fNameRef} className='border outline-none focus:border-black rounded-md p-1' />
                     </div>
-                    <div className='flex items-center gap-2'>
+                    <div className='flex flex-row items-center gap-2'>
                         <label className='font-medium text-xl' htmlFor="lname">Last Name</label>
                         <input type="text" name="lname" id="lname" ref={lNameRef} className='border outline-none focus:border-black rounded-md p-1' />
                     </div>
                 </div>
-                <div className='flex items-center justify-between flex-wrap my-5'>
-                    <div className='flex items-center gap-2 flex-col'>
+                <div className='flex flex-col md:flex-row items-left md:items-center justify-between flex-wrap gap-4 md:my-5'>
+                    <div className='flex items-center gap-2 flex-row'>
                         <label className='font-medium text-xl' htmlFor="email">Email</label>
-                        <input type="text" name="email" id="email" ref={emailRef} className='border outline-none focus:border-black rounded-md p-1' />
-                        {emailWarning && <span className="text-red-500">{emailWarning}</span>}
+                        <div>
+                            <input type="text" autoComplete='off' name="email" id="email" ref={emailRef} className='border outline-none focus:border-black rounded-md p-1' />
+                            {emailWarning && <span className="text-red-500">{emailWarning}</span>}
+                        </div>
                     </div>
-                    <div className='flex items-center gap-2'>
+                    <div className='flex flex-row items-center gap-2'>
                         <label className='font-medium text-xl' htmlFor="age">Age</label>
                         <input type="number" ref={ageRef} name="age" id="age" className='border outline-none focus:border-black rounded-md p-1' />
                     </div>
                 </div>
-                <div className='flex items-center justify-between flex-wrap'>
-                    <div className='flex items-center gap-2 flex-col'>
+                <div className='flex flex-col md:flex-row items-left md:items-center gap-4 justify-between flex-wrap'>
+                    <div className='flex flex-row items-center gap-2'>
                         <label className='font-medium text-xl' htmlFor="password">Password</label>
-                        <input type="password" name='password' ref={passwordRef} className='border outline-none focus:border-black rounded-md p-1' />
+                        <input type="password" autoComplete='off' name='password' ref={passwordRef} className='border outline-none focus:border-black rounded-md p-1' />
                     </div>
-                    <div className='flex items-center gap-2 flex-col'>
+                    <div className='flex flex-row items-center gap-2'>
                         <label className='font-medium text-xl' htmlFor="cpassword">Confirm Password</label>
-                        <input type="password" name="cpassword" ref={confirmPasswordRef} className='border outline-none focus:border-black rounded-md p-1' />
-                        {passwordWarning && <span className="text-red-500">{passwordWarning}</span>}
+                        <div>
+                            <input type="password" name="cpassword" ref={confirmPasswordRef} className='border outline-none focus:border-black rounded-md p-1' />
+                            {passwordWarning && <span className="text-red-500">{passwordWarning}</span>}
+                        </div>
                     </div>
                 </div>
                 <button type="submit" className='btn bg-black text-white hover:bg-[#333] mt-5 text-center block w-[300px] mx-auto'>

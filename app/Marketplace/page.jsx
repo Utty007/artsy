@@ -2,6 +2,7 @@ import React from 'react'
 import SubHeader from './Components/SubHeader'
 import ProductsList from './Components/ProductsList'
 import Filter from './Components/Filter';
+import Footer from '../Components/Footer';
 
 function page() {
   return (
@@ -12,6 +13,7 @@ function page() {
         <Filter /> 
         <ProductsList />
       </div>
+      <Footer />
     </div>
   )
 }

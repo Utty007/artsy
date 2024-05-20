@@ -116,8 +116,8 @@ function Page() {
     });
 
     return (
-        <div className='my-12 mx-auto w-[500px] flex flex-col gap-4'>
-            <h2>Welcome to Artsy</h2>
+        <div className='my-12 mx-6 md:mx-auto md:w-[500px] flex flex-col gap-4 overflow-x-hidden'>
+            <h2 className='text-2xl font-medium mb-4'>Welcome to Artsy</h2>
             <div className='flex gap-2 items-center'>
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" ref={emailRef} className='p-2 outline-none border rounded-md w-full focus:border-black' placeholder='johndoe@gmail.com' />

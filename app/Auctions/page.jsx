@@ -5,6 +5,7 @@ import Carousel from './Carousel';
 import prodImgTwo from '@/app/Assets/AuctionImages/prodImgTwo.png';
 import prodImgOne from '@/app/Assets/AuctionImages/prodImgOne.png'
 import HeartSk from '../Assets/Icons/HeartSk';
+import Footer from '../Components/Footer';
 
 function page() {
   return (
@@ -65,6 +66,7 @@ function page() {
         </div>
        </div>
       </div>
+      <Footer />
     </div>
   )
 }

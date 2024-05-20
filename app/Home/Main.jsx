@@ -5,6 +5,7 @@ import Upcoming from '../Components/Upcoming';
 import Image from 'next/image';
 import arrowIcon from '@/app/Assets/Icons/arrowIcon.png';
 import Section from '../Components/Section';
+import Footer from '../Components/Footer';
 
 function Main() {
   return (
@@ -27,6 +28,7 @@ function Main() {
           </div>
         </div>
         <Section />
+        <Footer />
       </div>
   )
 }
