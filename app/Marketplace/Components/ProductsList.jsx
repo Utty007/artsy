@@ -11,6 +11,7 @@ import ProductImgSeven from '@/app/Assets/ProductImages/PISeven.png'
 import ProductImgEight from '@/app/Assets/ProductImages/PIEight.png'
 import ProductImgNine from '@/app/Assets/ProductImages/PINine.png'
 import Link from 'next/link';
+import { useCartStore } from '@/app/Store/CartStore';
 
 function ProductsList() {
     const Products = [
@@ -24,16 +25,28 @@ function ProductsList() {
         { name: "Rosemary '22", img: ProductImgEight , id: 'rosemary22', price: 320},
         { name: 'Beverly', img: ProductImgNine, id: 'beverly', price: 170 }
     ]
+
+    const sortOrder = useCartStore(state => state.sortOrder) 
     const [spliceNum, setSpliceNum] = useState(6)
     const [SMV, setSMV] = useState(true)
     const seeMore = () => { 
         setSpliceNum(9);
         setSMV(false)
     }
+
+    const sortedProducts = Products.sort((a, b) => {
+        if (sortOrder === 'asc') {
+            return a.name.localeCompare(b.name);
+        } else if (sortOrder === 'desc') {
+            return b.name.localeCompare(a.name);
+        } else {
+            return 0; // Default, no sorting
+        }
+    })
   return (
     <div className='md:max-w-[925px] w-full md:px-6'>
         <div className='flex flex-col w-full md:w-auto md:flex-row items-center justify-between flex-wrap '>
-            {Products.splice(0, spliceNum).map((items, index)=> {
+            {sortedProducts.splice(0, spliceNum).map((items, index)=> {
             return <Link href={`/Marketplace/${items.id}`} key={index} className='bg-white w-full md:w-[250px] shadow-md p-2 rounded-md mb-6'>
                 <div>
                     <Image src={items.img} className='w-full' alt='Product Image' />

@@ -81,6 +81,8 @@ export const useCartStore = create((set, get) => ({
   setCartIsLoading: (bool) => {
     set({ cartIsLoading: bool });
   },
+  sortOrder: "default",
+  setSortOrder: (order) => set({ sortOrder: order }),
 }));
 
 // TO TRY
