@@ -3,8 +3,8 @@ import Slideshow from './ImageShuffle';
 
 function Section() {
   return (
-    <div className='bg-[#e2e2e2] p-10 pr-16 relative'>
-          <div className='flex gap-4 md:hidden absolute top-0 right-[-5px]'>
+    <div className='bg-[#e2e2e2] p-4 md:p-10 pr-16 relative w-full overflow-hidden'>
+        <div className='flex gap-4 md:hidden absolute top-0 right-[-5px]'>
               <p>Editorials</p>
               <li>Fashion</li>
               <li>Lifestyle</li>
@@ -21,7 +21,7 @@ function Section() {
                 </div>
             </div>
         </div>
-        <div className='absolute w-[500px] h-[500px] m-auto bottom-0 left-0 right-0'>
+        <div className='fixed w-[300px] h-[300px] md:w-[500px] md:h-[500px] m-auto bottom-0 left-0'>
             <Slideshow />
         </div>
         <div className='w-[80%] m-auto'>
