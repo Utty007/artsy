@@ -21,7 +21,7 @@ function Section() {
                 </div>
             </div>
         </div>
-        <div className='fixed w-[300px] h-[300px] md:w-[500px] md:h-[500px] m-auto bottom-0 left-0'>
+        <div className='absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] m-auto bottom-0 left-0 right-0'>
             <Slideshow />
         </div>
         <div className='w-[80%] m-auto'>
