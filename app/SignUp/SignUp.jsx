@@ -102,34 +102,34 @@ function SignUp() {
             <h3 className='ml-6 md:ml-0 text-center font-medium text-2xl mb-4'>Welcome to Artsy</h3>
             <form className='flex flex-col gap-4 px-8' onSubmit={SignUpHandler} autoComplete='off'>
                 <div className='flex flex-col md:flex-row items-left md:items-center justify-between gap-4 flex-row-wrap'>
-                    <div className='flex flex-row items-center gap-2 justify-between md:justify-normal'>
+                    <div className='flex md:flex-row md:items-center gap-2 justify-between md:justify-normal flex-col items-start'>
                         <label className='font-medium text-xl' htmlFor="fname">First Name</label>
                         <input type="text" name="fname" id="fname" ref={fNameRef} className='border outline-none focus:border-black rounded-md p-1' />
                     </div>
-                    <div className='flex flex-row items-center gap-2 justify-between md:justify-normal'>
+                    <div className='flex md:flex-row md:items-center gap-2 justify-between md:justify-normal flex-col items-start'>
                         <label className='font-medium text-xl' htmlFor="lname">Last Name</label>
                         <input type="text" name="lname" id="lname" ref={lNameRef} className='border outline-none focus:border-black rounded-md p-1' />
                     </div>
                 </div>
                 <div className='flex flex-col md:flex-row items-left md:items-center justify-between flex-wrap gap-4 md:my-5'>
-                    <div className='flex items-center gap-2 justify-between md:justify-normal flex-row'>
+                    <div className='flex md:items-center gap-2 justify-between md:justify-normal flex-col items-start md:flex-row'>
                         <label className='font-medium text-xl' htmlFor="email">Email</label>
                         <div>
                             <input type="text" autoComplete='off' name="email" id="email" ref={emailRef} className='border outline-none focus:border-black rounded-md p-1' />
                             {emailWarning && <span className="text-red-500">{emailWarning}</span>}
                         </div>
                     </div>
-                    <div className='flex flex-row items-center gap-2 justify-between md:justify-normal'>
+                    <div className='flex md:flex-row md:items-center gap-2 justify-between md:justify-normal flex-col items-start'>
                         <label className='font-medium text-xl' htmlFor="age">Age</label>
                         <input type="number" ref={ageRef} name="age" id="age" className='border outline-none focus:border-black rounded-md p-1' />
                     </div>
                 </div>
                 <div className='flex flex-col md:flex-row items-left md:items-center gap-4 justify-between flex-wrap'>
-                    <div className='flex flex-row items-center gap-2 justify-between md:justify-normal'>
+                    <div className='flex md:flex-row md:items-center gap-2 justify-between md:justify-normal flex-col items-start'>
                         <label className='font-medium text-xl' htmlFor="password">Password</label>
                         <input type="password" autoComplete='off' name='password' ref={passwordRef} className='border outline-none focus:border-black rounded-md p-1' />
                     </div>
-                    <div className='flex flex-row items-center gap-2 justify-between md:justify-normal'>
+                    <div className='flex md:flex-row md:items-center gap-2 justify-between md:justify-normal flex-col items-start'>
                         <label className='font-medium text-xl' htmlFor="cpassword">Confirm Password</label>
                         <div>
                             <input type="password" name="cpassword" ref={confirmPasswordRef} className='border outline-none focus:border-black rounded-md p-1' />
