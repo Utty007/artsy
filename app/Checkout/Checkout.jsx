@@ -7,14 +7,18 @@ import Link from 'next/link';
 import { getAuth } from 'firebase/auth';
 import { app } from '../Auth/firebase';
 import { useRouter } from 'next/navigation';
+import Gratitude from './Gratitude';
 
 function Checkout() {
     const [cart, userData, setCartItems] = useCartStore((state) => [state.cartItems, state.userData, state.setCartItems])
     const [totalPrice, setTotalPrice] = useState(0);
+    const [success, setSuccess] = useState(false)
     const price = totalPrice;
     const auth = getAuth(app);
     const router = useRouter();
+
     useEffect(() => {
+        setSuccess(false)
         const isLoggedIn = auth.onAuthStateChanged((user) => {
             if (user) {
                 // Do nothing
@@ -35,18 +39,21 @@ function Checkout() {
             setTotalPrice(0)
         }
     }, [cart])
-
     const successHandler = () => {
         setCartItems([])
+        console.log('Order Successful!')
+        setSuccess(true)
     }
 
     const closeHandler = () => {
         console.log('User closed the payment portal')
-    }
-    
+    }    
     return (
-        <div className='text-center bg-black text-white p-5 rounded-md w-[350px] md:w-[500px] m-auto'>
-            <h3 className='text-2xl'>Product Summary</h3>
+        <div className='text-center bg-black text-white p-5 rounded-md w-[350px] md:w-[500px] m-auto relative'>
+            {success && <Gratitude />}
+            {
+                !success && <>
+                <h3 className='text-2xl'>Product Summary</h3>
             {cart.length !== 0 ? <>
                 <h2 className='mt-2 mb-3'>Number of items: {cart.length}</h2>
             <h4 className='mb-4'>Total Cost: ₦{price.toFixed(2)}</h4>
@@ -55,6 +62,8 @@ function Checkout() {
             <h3 className='mb-8 mt-2'>There are no Items in the cart</h3>
             <Link className="bg-white text-black rounded-md p-3" href='/Marketplace'>Continue Shopping</Link>
             </>}
+                </>
+            }
         </div>
   )
 }
