@@ -36,8 +36,8 @@ function page() {
                 </div>
                 <div className='text-[#888] font-medium text-lg w-[400px]'>
                     <h3 className='flex justify-between'><span>Products in cart:</span> <span>{cart.length} Items</span></h3>
-                    <h3 className='flex justify-between my-6'><span>Shipping:</span><span> $12</span></h3>
-                    <h3 className='flex justify-between'><span>Total:</span> <span>${price.toFixed(2)}</span></h3>
+                    <h3 className='flex justify-between my-6'><span>Shipping:</span><span> ₦12</span></h3>
+                    <h3 className='flex justify-between'><span>Total:</span> <span>₦{price.toFixed(2)}</span></h3>
                 </div>
             </div>
           </div>

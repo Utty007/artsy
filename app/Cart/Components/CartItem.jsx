@@ -58,7 +58,7 @@ function CartItem(props) {
         <div className='flex flex-col gap-12 justify-between items-center'>
             <Delete onClick={()=> {deleteHandler()}} />
             <h3 className='text-xl md:text-2xl font-medium md:font-bold'>
-                ${props.props.product.price * props.props.quantity}
+                ₦{props.props.product.price * props.props.quantity}
             </h3>
         </div>
         </div>

@@ -65,10 +65,7 @@ function page() {
           </td>
           <td rowSpan={1} className='flex items-center justify-between gap-8 p-2'>
             <h2 className='text-3xl font-bold'>{product.name}</h2>
-            <div className='flex items-center'>
-              <EthIcon />
-              <h3 className='text-2xl font-bold'>{product.price}</h3>
-            </div>
+            <h3 className='text-2xl font-bold'>₦{product.price}</h3>
           </td>
         </tr>
         <tr className='border border-black'>

@@ -12,6 +12,7 @@ function SignUp() {
     const [generalMessage, setGeneralMessage] = useState(null);
     const [emailWarning, setEmailWarning] = useState(null);
     const [passwordWarning, setPasswordWarning] = useState(null);
+    const [status, setStatus] = useState()
     const [setUserInfo] = useCartStore(state => [state.setUserData]);
     const router = useRouter()
 
@@ -35,6 +36,7 @@ function SignUp() {
         });
         setIsLoading(false);
         setGeneralMessage('User is successfully signed up and logged in, redirecting...');
+        setStatus('success')
         setTimeout(() => {
             setGeneralMessage(null);
             router.replace('/Profile')
@@ -51,6 +53,7 @@ function SignUp() {
         } catch (error) {
             const { message: errorMessage } = error;
             setGeneralMessage(errorMessage);
+            setStatus('error')
         }
     }
 
@@ -66,26 +69,28 @@ function SignUp() {
 
         if (!fName || !lName || !email || !age || !password || !confirmPassword) {
             setGeneralMessage('All fields are required');
+            setStatus('error')
+            setTimeout(() => {
+                setGeneralMessage(null)
+            }, 5000)
             valid = false;
         } else {
             setGeneralMessage(null);
-        }
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                setEmailWarning('Invalid email format');
+                valid = false;
+            } else {
+                setEmailWarning(null);
+            }
 
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            setEmailWarning('Invalid email format');
-            valid = false;
-        } else {
-            setEmailWarning(null);
+            if (password !== confirmPassword) {
+                setPasswordWarning('Passwords do not match');
+                valid = false;
+            } else {
+                setPasswordWarning(null);
+            }
         }
-
-        if (password !== confirmPassword) {
-            setPasswordWarning('Passwords do not match');
-            valid = false;
-        } else {
-            setPasswordWarning(null);
-        }
-
         return valid;
     }
 
@@ -114,7 +119,7 @@ function SignUp() {
                 <div className='flex flex-col md:flex-row items-left md:items-center justify-between flex-wrap gap-4 md:my-5'>
                     <div className='flex md:items-center gap-2 justify-between md:justify-normal flex-col items-start md:flex-row'>
                         <label className='font-medium text-xl' htmlFor="email">Email</label>
-                        <div>
+                        <div className='flex flex-col'>
                             <input type="text" autoComplete='off' name="email" id="email" ref={emailRef} className='border outline-none focus:border-black rounded-md p-1' />
                             {emailWarning && <span className="text-red-500">{emailWarning}</span>}
                         </div>
@@ -131,7 +136,7 @@ function SignUp() {
                     </div>
                     <div className='flex md:flex-row md:items-center gap-2 justify-between md:justify-normal flex-col items-start'>
                         <label className='font-medium text-xl' htmlFor="cpassword">Confirm Password</label>
-                        <div>
+                        <div className='flex flex-col'>
                             <input type="password" name="cpassword" ref={confirmPasswordRef} className='border outline-none focus:border-black rounded-md p-1' />
                             {passwordWarning && <span className="text-red-500">{passwordWarning}</span>}
                         </div>
@@ -140,7 +145,7 @@ function SignUp() {
                 <button type="submit" className='btn bg-black text-white hover:bg-[#333] mt-5 text-center block w-[300px] mx-auto'>
                     {isLoading ? <span className="loading loading-spinner loading-lg"></span> : 'Sign Up'}
                 </button>
-                {generalMessage && <div role="alert" className="alert alert-success absolute bottom-5 right-5 w-[400px] text-white shadow-lg">
+                {generalMessage && <div role="alert" className={`alert alert-${status} absolute bottom-5 right-5 w-[400px] text-white shadow-lg`}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     <span>{generalMessage}</span>
                 </div>}

@@ -75,7 +75,7 @@ function Page() {
             router.replace('/Profile');
         } catch (error) {
             setIsLoading(false);
-            if (error.message === 'Firebase: Error (auth/invalid-credential).') {
+            if (error.message === 'Firebase: Error (auth/invalid-credential).' || error.message === 'Firebase: Error (auth/invalid-email).') {
                 setShowErrorAlert(true)
                 setMessage('Check Email/Password And Try Again')
                 setTimeout(() => {
@@ -83,7 +83,6 @@ function Page() {
                     setShowErrorAlert(false)
                 }, 5000)
             } else {
-                console.log(error)
                 setShowErrorAlert(true) 
                 setMessage('An Error Occured Please Try Again Later')
                 setTimeout(() => {
