@@ -8,7 +8,7 @@ import { getAuth } from 'firebase/auth';
 import { app } from '../Auth/firebase';
 import { useRouter } from 'next/navigation';
 import Gratitude from './Gratitude';
-import { updateUserData } from '../Cart/Components/CartItem';
+import { updateCartData } from '../Cart/Components/CartItem';
 
 function Checkout() {
   const [cart, userData, setCartItems] = useCartStore((state) => [state.cartItems, state.userData, state.setCartItems]);
@@ -41,7 +41,7 @@ function Checkout() {
 
   const successHandler = () => {
     setCartItems([]);
-    updateUserData(userId, [])
+    updateCartData(userId, [])
     setSuccess(true);
   };
 

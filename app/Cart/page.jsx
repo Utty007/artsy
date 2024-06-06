@@ -4,11 +4,17 @@ import React, { useEffect, useState } from 'react'
 import CartItem from './Components/CartItem';
 import Link from 'next/link';
 import { useCartStore } from '../Store/CartStore';
+import { getAuth } from 'firebase/auth';
+import { app } from '../Auth/firebase';
 
 function page() {
     const [cart, cartIsLoading, setCartIsLoading] = useCartStore(state => [state.cartItems, state.cartIsLoading, state.setCartIsLoading]);
+    const [link, setLink] = useState('')
     const [totalPrice, setTotalPrice] = useState(0);
-    const price = totalPrice + 12
+    const price = totalPrice + 12;
+
+    const auth = getAuth(app)
+
     useEffect(() => {
         const calculateTotalPrice = (cartItems) => {
         let totalPrice = 0;
@@ -18,6 +24,15 @@ function page() {
         setTotalPrice(totalPrice)
       }
         calculateTotalPrice(cart)
+
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (user) {
+                setLink('/Checkout')
+            } else {
+                setLink('/Login')
+            }
+        })
+       return () => unsubscribe();
     }, [cart])
   return (
       <>
@@ -31,7 +46,7 @@ function page() {
             <hr />
             <div className='flex items-center justify-between gap-6 flex-wrap py-9'>
                 <div className='flex flex-col gap-8 text-center'>
-                    <Link className='py-4 px-14 bg-black text-white border-white text-lg' href='/Checkout'>Proceed To Checkout</Link>
+                    <Link className='py-4 px-14 bg-black text-white border-white text-lg' href={link}>Proceed To Checkout</Link>
                     <Link className='underline text-lg' href='/Marketplace'>Continue Shopping</Link>
                 </div>
                 <div className='text-[#888] font-medium text-lg w-[400px]'>

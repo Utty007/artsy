@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { updateUserData } from "../Cart/Components/CartItem";
+import { updateCartData } from "../Cart/Components/CartItem";
 
 export const useCartStore = create((set, get) => ({
   cartItems: [],
@@ -30,7 +30,7 @@ export const useCartStore = create((set, get) => ({
     });
     set({ totalPrice: tPrice });
 
-    updateUserData(get().userId, get().cartItems);
+    updateCartData(get().userId, get().cartItems);
   },
   reduceFromCart: (cartItem) => {
     set(() => {
@@ -44,8 +44,8 @@ export const useCartStore = create((set, get) => ({
       return { cartItems: updatedCartItems };
     });
 
-    // Call updateUserData after reducing item from cart
-    updateUserData(get().userId, get().cartItems);
+    // Call updateCartData after reducing item from cart
+    updateCartData(get().userId, get().cartItems);
   },
   deleteFromCart: (cartItem) => {
     // Calculate the price of the item to be deleted
@@ -67,8 +67,8 @@ export const useCartStore = create((set, get) => ({
       }));
     }
 
-    // Call updateUserData after deleting item from cart
-    updateUserData(get().userId, get().cartItems);
+    // Call updateCartData after deleting item from cart
+    updateCartData(get().userId, get().cartItems);
   },
   userData: null,
   setUserData: (userInfo) => {

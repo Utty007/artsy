@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getAuth, signOut } from "firebase/auth";
 import { app } from '../Auth/firebase';
 import { useEffect, useState } from 'react';
+import Merch from '../Merch/Merch';
 
 function Profile() {
     const [userInfo, setUserInfo, setCartItems] = useCartStore(state => [state.userData, state.setUserData, state.setCartItems]);
@@ -62,9 +63,9 @@ function Profile() {
                             <span className="text-xl">{userInfo.firstName.substring(0,1) + userInfo.lastName.substring(0,1)}</span>
                         </div>
                     </div> 
-                    <h3 className='my-3'>Name: {userInfo.firstName + " " + userInfo.lastName}</h3>
-                    <h4>Age: {userInfo.age}</h4>
-                    <h5 className='mt-3'>Email: {userInfo.email}</h5>         
+                    <h3 className='mt-5'>Name: {userInfo.firstName + " " + userInfo.lastName}</h3>
+                    <h5 className='my-3'>Email: {userInfo.email}</h5>         
+                    <h4 className='capitalize'>Account Type: {userInfo.accType}</h4>
                     <button onClick={signOutHandler} className='btn bg-white text-black mt-4'>Sign Out</button>
                 </div> 
                 : 
@@ -72,6 +73,10 @@ function Profile() {
                     <h3>User Is Not Logged In</h3>
                     <Link href='/Login' className='btn bg-white text-black mt-4'>Click here to Login</Link>
                 </div>
+            }
+
+            {
+                userInfo?.accType === 'merchant' ? <Merch /> : null
             }
 
             {/* Success alert with progress bar */}

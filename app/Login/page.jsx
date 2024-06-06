@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/no-unescaped-entities */
-'use client'
+'use client';
 import React, { useRef, useState, useEffect } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { getDatabase, ref, get } from 'firebase/database';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '../Store/CartStore';
 import { app } from '../Auth/firebase';
+import { updateCartData } from '../Cart/Components/CartItem';
 
 function Page() {
     const emailRef = useRef();
@@ -17,7 +18,7 @@ function Page() {
     const [message, setMessage] = useState(null);
     const [setUserInfo, cart, setCartItems] = useCartStore(state => [state.setUserData, state.cartItems, state.setCartItems]);
 
-    const mergeCartItems = (existingCartItems, currentCartItems) => {
+    const mergeCartItems = (existingCartItems, currentCartItems, userId) => {
         const mergedCartItems = new Map();
         if (existingCartItems) {
             existingCartItems.forEach(item => {
@@ -32,6 +33,7 @@ function Page() {
                 mergedCartItems.set(item.product.id, item);
             }
         });
+        updateCartData(userId, Array.from(mergedCartItems.values()))
         return Array.from(mergedCartItems.values());
     }
 
@@ -40,10 +42,31 @@ function Page() {
         setMessage(null);
         try {
             const response = await signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value);
-            const fetchUserData = async (userId) => {
+            const userId = response.user.uid;
+
+            const fetchAccountType = async (userId) => {
+                const db = getDatabase();
+                const userRef = ref(db, `users/client/${userId}`);
+                const snapshot = await get(userRef);
+
+                if (snapshot.exists()) {
+                    return 'client';
+                } else {
+                    const merchantRef = ref(db, `users/merchant/${userId}`);
+                    const merchantSnapshot = await get(merchantRef);
+
+                    if (merchantSnapshot.exists()) {
+                        return 'merchant';
+                    } else {
+                        throw new Error('Account type not found');
+                    }
+                }
+            };
+
+            const fetchUserData = async (userId, accountType) => {
                 try {
                     const db = getDatabase();
-                    const userRef = ref(db, `users/${userId}`);
+                    const userRef = ref(db, `users/${accountType}/${userId}`);
                     const snapshot = await get(userRef);
                     if (snapshot.exists()) {
                         const userData = snapshot.val();
@@ -54,7 +77,7 @@ function Page() {
                                 const dataSnapshot = await get(userCartRef);
                                 if (dataSnapshot.exists()) {
                                     const userData = dataSnapshot.val();
-                                    const mergedCartItems = mergeCartItems(userData.cartItems, cart);
+                                    const mergedCartItems = mergeCartItems(userData.cartItems, cart, userId);
                                     setCartItems(mergedCartItems);
                                 }
                             } catch (error) {
@@ -71,7 +94,9 @@ function Page() {
                     console.error('Error reading user data:', error.message);
                 }
             };
-            await fetchUserData(response.user.uid);
+
+            const accountType = await fetchAccountType(userId);
+            await fetchUserData(userId, accountType);
             router.replace('/Profile');
         } catch (error) {
             setIsLoading(false);
@@ -83,7 +108,7 @@ function Page() {
                     setShowErrorAlert(false)
                 }, 5000)
             } else {
-                setShowErrorAlert(true) 
+                setShowErrorAlert(true)
                 setMessage('An Error Occured Please Try Again Later')
                 setTimeout(() => {
                     setMessage(null)
@@ -101,7 +126,7 @@ function Page() {
             // Update progress bar width every 100ms until it reaches 0%
             const interval = setInterval(() => {
                 setProgressWidth(prevWidth => {
-                    const newWidth = parseInt(prevWidth) - .5 + '%';
+                    const newWidth = parseInt(prevWidth) - 0.5 + '%';
                     if (newWidth === '0%') clearInterval(interval);
                     return newWidth;
                 });
