@@ -1,6 +1,6 @@
 // server.js or custom-server.js (or any filename of your choice)
-const { join } = require("path");
-const next = require("next");
+import { join } from "path";
+import next from "next";
 const isDev = process.env.NODE_ENV !== "production";
 
 const nextjsDistDir = join("src", require("./src/next.config.js").distDir);
