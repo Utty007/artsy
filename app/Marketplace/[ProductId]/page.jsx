@@ -87,11 +87,11 @@ const Page = () => {
         <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
         <span>Item successfully added to cart.</span>
       </div>}
-      <Image className='block mb-5 md:hidden m-auto w-full' width={300} height={300} src={product.img} alt='Product Image' />
+      <Image unoptimized={true} className='block mb-5 md:hidden m-auto w-full' width={300} height={300} src={product.img} alt='Product Image' />
       <table className='border box-border border-black m-auto'>
         <tr className='border border-black h-[65px]'>
           <td rowSpan={5} className='p-4 hidden md:table-cell border border-black'>
-            <Image src={product.img} alt='Product Image' width={300} height={400} />
+            <Image unoptimized={true} src={product.img} alt='Product Image' width={300} height={400} />
           </td>
           <td rowSpan={1} className='flex items-center justify-between gap-8 p-2'>
             <h2 className='text-3xl font-bold'>{product.name}</h2>
