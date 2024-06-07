@@ -39,7 +39,7 @@ function CartItem(props) {
       <div>
         <div className='flex items-center justify-between gap-8 py-4'>
         <div className='flex items-center gap-8'>
-            <Image src={props.props.product.img} width={200} height={200} className='w-[100px] h-[100px] md:w-[200px] md:h-[200px]' alt="Product Image"  />
+            <Image unoptimized={true} src={props.props.product.img} width={200} height={200} className='w-[100px] h-[100px] md:w-[200px] md:h-[200px]' alt="Product Image"  />
             <div className='flex flex-col gap-3'>
                 <h3 className='text-xl font-medium'>{props.props.product.name}</h3>
                 <p>Clearamane</p>
