@@ -6,7 +6,6 @@ import { useCartStore } from '@/app/Store/CartStore';
 import { getDatabase, update, ref } from 'firebase/database';
 import { app } from '@/app/Auth/firebase';
 import { getAuth } from 'firebase/auth';
-import { FetchUserData } from '@/app/Auth/firebaseService';
 
 export const updateCartData = async (userId, cartItems) => {
     try {
