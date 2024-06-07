@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 'use client'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
@@ -63,7 +62,7 @@ const ProductsList = () => {
                 {sortedProducts.map((items, index)=> {
                 return <Link href={`/Marketplace/${items.id}`} key={index} className='bg-white w-full md:w-[250px] shadow-md p-2 rounded-md mb-6'>
                     <div>
-                        <img unoptimized={true} src={items.img} width={300} height={300} className='w-full' alt='Product Image' />
+                        <Image unoptimized={true} src={items.img} width={300} height={300} className='w-full' alt='Product Image' />
                     </div>
                     <div className='flex items-center justify-between md:block'>
                         <h3 className='text-xl my-2'>{items.name}</h3>
@@ -79,4 +78,3 @@ const ProductsList = () => {
 }
 
 export default ProductsList;
-
