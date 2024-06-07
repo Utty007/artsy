@@ -175,7 +175,7 @@ const Merch = (props) => {
           <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
             {userMerchantProducts.map((product) => (
               <div key={product.id} className='border p-4'>
-                <Image src={product.img} alt={product.name} width={300} height={300} className='w-full mb-2' />
+                <Image unoptimized={true} src={product.img} alt={product.name} width={300} height={300} className='w-full mb-2' />
                 <p className='text-lg font-medium'>{product.name}</p>
                 <p className='text-sm text-gray-500 mb-2'>{product.description}</p>
                 <p className='text-lg font-bold'>₦{product.price}</p>
