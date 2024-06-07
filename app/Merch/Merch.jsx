@@ -172,9 +172,9 @@ const Merch = (props) => {
         ) : userMerchantProducts.length === 0 ? (
           <p className='text-center'>You Currently Do Not Have Any Product.</p>
         ) : (
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+          <div className='flex flex-row flex-wrap items-center justify-center gap-4'>
             {userMerchantProducts.map((product) => (
-              <div key={product.id} className='border p-4'>
+              <div key={product.id} className='border p-4 w-[300px] md:w-[400px]'>
                 <Image unoptimized={true} src={product.img} alt={product.name} width={300} height={300} className='w-full mb-2' />
                 <p className='text-lg font-medium'>{product.name}</p>
                 <p className='text-sm text-gray-500 mb-2'>{product.description}</p>

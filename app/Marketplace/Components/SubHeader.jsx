@@ -23,7 +23,7 @@ function SubHeader() {
             <input type="text" name="Search" placeholder='Search' className='bg-transparent'/>
         </div>
         <div className='flex items-center justify-between p-2 rounded-lg w-full md:w-[900px] shadow-md'>
-            <h3>Seeing 1-6 of 9 results</h3>
+            <h3>Showing all results.</h3>
             <div className='border border-black p-2 rounded-lg'>
                 <select name="Sort" className='outline-none' onChange={handleSortChange}>
                     <option value="Default">Sort</option>

@@ -61,7 +61,7 @@ const ProductsList = () => {
                 return <Link href={`/Marketplace/${items.id}`} key={index} className='bg-white w-full md:w-[250px] shadow-md p-2 rounded-md mb-6'>
                     <div>
                       {console.log(items.img)}
-                        <Image unoptimized={true} src={items.img} width={300} height={300} className='w-full' alt='Product Image' />
+                        <Image unoptimized={true} src={items.img} width={300} height={300} className='w-full h-[250px]' alt='Product Image' />
                     </div>
                     <div className='flex items-center justify-between md:block'>
                         <h3 className='text-xl my-2'>{items.name}</h3>
