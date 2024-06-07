@@ -17,6 +17,11 @@ const Page = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [success, toggleSuccess] = useState(false)
   const [quantity, setQuantity] = useState(1)
+  const [showDesc, setShowDesc] = useState(false)
+
+  const handleShowDesc = () => {
+    setShowDesc(!showDesc)
+  }
 
   const fetchProducts = async () => {
     setIsLoading(true)
@@ -28,7 +33,6 @@ const Page = () => {
     if (dataSnapshot.exists()) {
       const productsData = dataSnapshot.val();
       setProducts(productsData)
-      console.log(productsData)
     } else {
       console.log('An error occurred.')
     }
@@ -41,7 +45,6 @@ const Page = () => {
 
   const id = useParams();   
   const product = products.find(item => item.id === id.ProductId)
-  console.log(product, id)
 
   const increment = () => {
     setQuantity(quantity + 1)
@@ -85,7 +88,7 @@ const Page = () => {
         <span>Item successfully added to cart.</span>
       </div>}
       <Image className='block mb-5 md:hidden m-auto w-full' width={300} height={300} src={product.img} alt='Product Image' />
-      <table className='border border-black m-auto'>
+      <table className='border box-border border-black m-auto'>
         <tr className='border border-black h-[65px]'>
           <td rowSpan={5} className='p-4 hidden md:table-cell border border-black'>
             <Image src={product.img} alt='Product Image' width={300} height={400} />
@@ -97,7 +100,7 @@ const Page = () => {
         </tr>
         <tr className='border border-black'>
           <td className='p-2'>
-            <h3 className='text-[#616161] text-xl font-normal'>Creator: <span className='text-[#4693ed]'>Ali Dawa</span></h3>
+            <h3 className='text-[#616161] text-xl font-normal'>Creator: <span className='text-[#4693ed]'>{product.creatorName}</span></h3>
             <h3 className='text-lg py-2'>Made in Italy</h3>
             <h3 className='text-xl font-medium'>Total views: <span>1.7k Views</span></h3>
             <div className='flex items-center gap-2 text-[#333] text-lg mb-3'>
@@ -110,9 +113,14 @@ const Page = () => {
           </td>
         </tr>
         <tr className='border border-black'>
-          <td className='flex items-center justify-between p-2'>
-            <h3 className='text-xl font-medium'>Descriptions</h3>
-            <ArrowUp />
+          <td className='p-2 md:max-w-[300px]'>
+            <div onClick={handleShowDesc} className='flex flex-row items-center justify-between cursor-pointer'>
+              <h3 className='text-xl font-medium'>Descriptions</h3>
+              {showDesc? <ArrowUp /> : <div className='rotate-180'> <ArrowUp /></div>}
+            </div>
+            {showDesc && <div className='text-[16px] pt-1'>
+              {product.description}
+            </div>}
           </td>
         </tr>
         <tr className='border border-black'>

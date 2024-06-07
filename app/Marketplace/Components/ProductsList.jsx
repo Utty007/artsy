@@ -20,13 +20,13 @@ const ProductsList = () => {
             if (dataSnapshot.exists()) {
               // Data exists, retrieve the data
               const userData = dataSnapshot.val();
-              console.log(userData.Products)
+             
               setProducts(userData.Products)
               setIsLoading(false)
             } else {
               // Data doesn't exist
               setIsLoading(false)
-              console.log("Products do not exist.")
+            //   console.log("Products do not exist.")
             }
           } catch (error) {
             setIsLoading(false)
@@ -40,12 +40,6 @@ const ProductsList = () => {
     }, [])
 
     const sortOrder = useCartStore(state => state.sortOrder) 
-    const [spliceNum, setSpliceNum] = useState(6)
-    const [SMV, setSMV] = useState(true)
-    const seeMore = () => { 
-        setSpliceNum(9);
-        setSMV(false)
-    }
 
     const sortedProducts = products?.sort((a, b) => {
         if (sortOrder === 'asc') {

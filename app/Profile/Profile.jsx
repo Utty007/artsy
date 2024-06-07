@@ -76,7 +76,7 @@ function Profile() {
             }
 
             {
-                userInfo?.accType === 'merchant' ? <Merch /> : null
+                userInfo?.accType === 'merchant' ? <Merch creatorName={userInfo.firstName + " " + userInfo.lastName} /> : null
             }
 
             {/* Success alert with progress bar */}
