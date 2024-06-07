@@ -7,7 +7,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "artsy-ecom.netlify.app",
         port: "3000",
-        pathname: "/file-path/**",
+        pathname: "/**",
       },
       {
         protocol: "https",
