@@ -50,6 +50,8 @@ const ProductsList = () => {
             return 0; // Default, no sorting
         }
     })
+  console.log('Unoptimized')
+  console.log(sortedProducts[1].img)
 
   return (
     <div className='md:max-w-[925px] w-full md:px-6'>
@@ -60,7 +62,7 @@ const ProductsList = () => {
                 {sortedProducts.map((items, index)=> {
                 return <Link href={`/Marketplace/${items.id}`} key={index} className='bg-white w-full md:w-[250px] shadow-md p-2 rounded-md mb-6'>
                     <div>
-                        <Image src={items.img} width={300} height={300} className='w-full' alt='Product Image' />
+                        <Image unoptimized={true} src={items.img} width={300} height={300} className='w-full' alt='Product Image' />
                     </div>
                     <div className='flex items-center justify-between md:block'>
                         <h3 className='text-xl my-2'>{items.name}</h3>
